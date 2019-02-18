@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import {
     Text,
+    View,
     TouchableHighlight,
 } from "react-native";
 import PropTypes from "prop-types";
@@ -8,13 +9,13 @@ import styles from "./styles"
 
 interface IProps {
     item: any;
-    onPress: any;
+    onRowPress: any;
 }
 
-export class ContactsRow extends PureComponent<IProps> {
+export class ListItem extends PureComponent<IProps> {
     public static propTypes = {
         item: PropTypes.any,
-        onPress: PropTypes.func.isRequired
+        onRowPress: PropTypes.func.isRequired
     }
 
     /**
@@ -27,12 +28,16 @@ export class ContactsRow extends PureComponent<IProps> {
     };
 
     render() {
-        const { name, date } = this.props.item;
+        const { name, date } = this.props.item.item;
+        console.log(this.props)
         return (
             <TouchableHighlight onPress={this.onRowPress} style={styles.container}>
-                <Text style={styles.nameText}>{name}</Text>
-                <Text style={styles.dateText}>{date}</Text>
+                <View>
+                    <Text style={styles.nameText}>{name}</Text>
+                    <Text style={styles.dateText}>{date}</Text>
+                </View>
             </TouchableHighlight>
+
         )
     }
 }

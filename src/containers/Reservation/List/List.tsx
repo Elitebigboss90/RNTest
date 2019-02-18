@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import {
     View,
     Text,
@@ -10,17 +10,17 @@ import { NavigationScreenProp } from "react-navigation";
 import { ListItem } from './ListItem'
 
 interface IProps {
-    data: object;
+    data: any;
 }
 
 interface IState {
 
 }
 
-class List extends PureComponent {
+class List extends Component<IProps, IState> {
 
     public static propTypes: any = {
-        data: PropTypes.object,
+        data: PropTypes.array,
     };
 
     /**
@@ -39,6 +39,7 @@ class List extends PureComponent {
 
     public render() {
         const { data } = this.props;
+        console.log(data)
         return (
             <FlatList
                 data={data}

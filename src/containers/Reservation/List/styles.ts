@@ -3,7 +3,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        height: 34
+        height: 50,
+        borderBottomWidth: 1,
+        borderBottomColor: 'grey',
+        padding: 5
     },
     nameText: {
         fontSize: 16,
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
         color: 'grey'
     },
     icon: {
-        weight: 24,
+        width: 24,
         height: 24
     }
 });
