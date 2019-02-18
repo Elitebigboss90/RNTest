@@ -1,0 +1,46 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'RNTest' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for RNTest
+
+  node_modules_path = '../node_modules'
+  rn_path = File.join(node_modules_path, 'react-native')
+  yoga_path = File.join(rn_path, 'ReactCommon/yoga')
+  double_conversion_path = File.join(rn_path, 'third-party-podspecs/DoubleConversion.podspec')
+  glog_path = File.join(rn_path, 'third-party-podspecs/glog.podspec')
+  folly_path = File.join(rn_path, 'third-party-podspecs/Folly.podspec')
+
+  rn_gesture_handler_path = File.join(node_modules_path, 'react-native-gesture-handler')
+
+  pod 'React', path: rn_path, subspecs: [
+    'Core',
+    'CxxBridge',
+    'DevSupport',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket'
+  ]
+
+  # Third party pods for react-native
+  pod 'DoubleConversion', :podspec => double_conversion_path
+  pod 'glog', :podspec => glog_path
+  pod 'Folly', :podspec => folly_path
+  pod 'yoga', path: yoga_path
+
+  #Pods for RNTest
+  pod 'RNGestureHandler', :path => rn_gesture_handler_path
+
+
+
+end
