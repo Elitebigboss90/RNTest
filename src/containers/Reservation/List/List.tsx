@@ -39,11 +39,12 @@ class List extends Component<IProps, IState> {
 
     public render() {
         const { data } = this.props;
-        console.log(data)
+
         return (
             <FlatList
                 data={data}
                 renderItem={this.onRenderItem}
+                listemptycomponent={() => <View />}
             />
         )
     }

@@ -28,13 +28,14 @@ export class ListItem extends PureComponent<IProps> {
     };
 
     render() {
-        const { name, date } = this.props.item.item;
+        const { name, arrivalDate, departureDate } = this.props.item.item;
         console.log(this.props)
         return (
             <TouchableHighlight onPress={this.onRowPress} style={styles.container}>
                 <View>
                     <Text style={styles.nameText}>{name}</Text>
-                    <Text style={styles.dateText}>{date}</Text>
+                    <Text style={styles.dateText}>{arrivalDate}</Text>
+                    <Text style={styles.dateText}>{departureDate}</Text>
                 </View>
             </TouchableHighlight>
 
