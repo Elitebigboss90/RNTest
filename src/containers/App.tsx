@@ -4,7 +4,7 @@ import { AppState } from "react-native";
 import { createAppContainer, NavigationScreenProp } from "react-navigation";
 import NavigationService from "../components/navigation/NavigationService"
 import RootNavigator from "../components/navigation/RootNavigator";
-import NavigationService from "../components/navigation/NavigationService";
+
 
 const AppContainer = createAppContainer(RootNavigator);
 
