@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
     textColor: {
         color: 'black'
     },
+    textInput: {
+        height: 50,
+        margin: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: 'grey'
+    }
 });
 
 export default styles;

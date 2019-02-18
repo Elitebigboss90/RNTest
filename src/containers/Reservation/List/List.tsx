@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import {
     View,
     Text,
@@ -13,11 +13,8 @@ interface IProps {
     data: any;
 }
 
-interface IState {
 
-}
-
-class List extends Component<IProps, IState> {
+class List extends PureComponent<IProps> {
 
     public static propTypes: any = {
         data: PropTypes.array,
@@ -43,6 +40,7 @@ class List extends Component<IProps, IState> {
         return (
             <FlatList
                 data={data}
+                keyExtractor={(item: any, index: number) => item.id}
                 renderItem={this.onRenderItem}
                 listemptycomponent={() => <View />}
             />
