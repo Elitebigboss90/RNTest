@@ -41,6 +41,4 @@ target 'RNTest' do
   #Pods for RNTest
   pod 'RNGestureHandler', :path => rn_gesture_handler_path
 
-
-
 end

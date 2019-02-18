@@ -23,7 +23,7 @@ const AppStackNavigator: NavigationContainer = createStackNavigator(
         }
     },
     {
-
+        headerMode: "none",
     }
 );
 
