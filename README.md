@@ -13,11 +13,13 @@
 - [Navigation Achitecture](docs/navigation.md)
 
 <a name="settingupvscode"/>
+
 ## Setting Up Visual Studio Code
 
 Once you have Visual Studio Code, make sure it is closed before opening this project. Upon opening this project you will be greeting with two popups. One will ask you to install the recommended extensions. Hit yes. The other will be asking you to open this project in a workspace. Also hit yes. You can check if you installed all the correct extensions by checking the extension tab and seeing that there is no more recommended extensions except for the Atom Keymap. If you want to you can install that too.
 
 <a name="installation"/>
+
 ## Installation
 
 1. Install yarn
