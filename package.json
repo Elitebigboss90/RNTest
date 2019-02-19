@@ -8,13 +8,15 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.28",
+    "apollo-link-ws": "^1.0.14",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
     "react": "16.6.3",
     "react-apollo": "^2.4.1",
     "react-native": "0.58.4",
     "react-native-gesture-handler": "^1.0.15",
-    "react-navigation": "^3.3.0"
+    "react-navigation": "^3.3.0",
+    "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
     "@types/react": "^16.8.3",

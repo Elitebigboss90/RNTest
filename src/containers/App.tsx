@@ -7,10 +7,16 @@ import RootNavigator from "../components/navigation/RootNavigator";
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { createHttpLink } from 'apollo-link-http'
 import { ApolloProvider, graphql } from 'react-apollo';
+import { split } from 'apollo-link'
+import { WebSocketLink } from 'apollo-link-ws'
+import { getMainDefinition } from 'apollo-utilities'
+import { SubscriptionClient } from 'subscriptions-transport-ws';
+import { ApolloLink } from 'apollo-link';
+
 
 const AppContainer = createAppContainer(RootNavigator);
 
-export interface IProps {
+interface IProps {
 
 }
 
@@ -22,8 +28,31 @@ const httpLink = createHttpLink({
     uri: 'https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev'
 })
 
+export const wsClient = new SubscriptionClient(`https://us1.prisma.sh/public-luckox-377/reservation-graphql-backend/dev`, {
+    reconnect: true,
+});
+
+const webSocketLink = new WebSocketLink(wsClient);
+
+const requestLink = ({ queryOrMutationLink, subscriptionLink }) =>
+    ApolloLink.split(
+        ({ query }) => {
+            const { kind, operation } = getMainDefinition(query);
+            return kind === 'OperationDefinition' && operation === 'subscription';
+        },
+        subscriptionLink,
+        queryOrMutationLink,
+    );
+
+const link = ApolloLink.from([
+    requestLink({
+        queryOrMutationLink: httpLink,
+        subscriptionLink: webSocketLink,
+    }),
+]);
+
 const client = new ApolloClient({
-    link: httpLink,
+    link,
     cache: new InMemoryCache()
 });
 

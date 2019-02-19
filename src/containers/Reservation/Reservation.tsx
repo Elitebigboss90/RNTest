@@ -39,8 +39,27 @@ const reservationQuery = gql`
   }
 `;
 
+const newReservation = gql`
+  subscription {
+    reservation{
+        node{
+            id
+            name
+            hotelName
+            arrivalDate
+            departureDate
+        }
+    }
+  }
+`
+
 
 class ReservationScreen extends Component<IProps, IState>{
+
+    constructor(props: IProps) {
+        super(props)
+
+    }
 
     public static propTypes: any = {
         navigation: PropTypes.shape({}).isRequired,
@@ -53,39 +72,49 @@ class ReservationScreen extends Component<IProps, IState>{
     }
 
     public handleItem = () => {
+        /* 
+        * TODO: Add item handler, give more props to each item, such as, delete, update. 
+        **/
+    }
 
+    _subscribeToNewReservation = async (subscribeToMore: any) => {
+        console.log("Reservation", subscribeToMore)
+        subscribeToMore({
+            document: newReservation,
+            updateQuery: (prev, { subscriptionData }) => {
+                if (!subscriptionData.data) return prev
+                const newReservation = subscriptionData.data.reservation.node;
+                const exists = prev.reservations.find(({ id }) => id === newReservation.id);
+                if (exists) return prev;
+
+                return prev.reservations.push(subscriptionData.data.reservation.node)
+            }
+        })
     }
 
     public render() {
-        const linksToRender = [
-            {
-                id: '1',
-                name: 'Prisma turns your database into a GraphQL API 😎',
-                date: 'https://www.prismagraphql.com',
-            },
-            {
-                id: '2',
-                name: 'The best GraphQL client',
-                date: 'https://www.apollographql.com/docs/react/',
-            },
-        ]
-
         return (
             <Query query={reservationQuery}>
-                {({ loading, error, data }) => < View style={styles.container}>
-                    <Header>
-                        <View />
-                        <View>
-                            <Text>HomePage</Text>
-                        </View>
-                        <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
-                    </Header>
+                {({ loading, error, data, subscribeToMore }) => {
+                    console.log(data);
+                    this._subscribeToNewReservation(subscribeToMore);
+                    return (
+                        < View style={styles.container}>
+                            <Header>
+                                <View />
+                                <View>
+                                    <Text>HomePage</Text>
+                                </View>
+                                <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
+                            </Header>
 
-                    <View style={{ flex: 1 }}>
-                        {console.log("get from", data, error)}
-                        <List data={data.reservations} onPress={this.handleItem} />
-                    </View>
-                </View>}
+                            <View style={{ flex: 1 }}>
+                                {console.log("get from", data, error)}
+                                <List data={data.reservations} onPress={this.handleItem} />
+                            </View>
+                        </View>)
+                }
+                }
             </Query>
         )
     }

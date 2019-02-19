@@ -166,15 +166,19 @@ class AddReservationScreen extends Component<IProps, IState>{
             }
         }
 
+    }
 
-
+    public onError(error: any) {
+        /**
+         * TODO: ERROR HANDLER FOR GRAPHQL REQUEST FAILD
+         */
     }
 
     public render() {
         const { name, hotelName, arrivalDateISO, departureDateISO } = this.state;
 
         return (
-            <Mutation mutation={Add_Reservation} onError={this.error} onCompleted={this._onCompleted} variables={{ name, hotelName, arrivalDate: arrivalDateISO, departureDate: departureDateISO }}>{PostMutation =>
+            <Mutation mutation={Add_Reservation} onError={this.onError} onCompleted={this._onCompleted} variables={{ name, hotelName, arrivalDate: arrivalDateISO, departureDate: departureDateISO }}>{PostMutation =>
                 <View style={styles.container}>
                     <Header>
                         <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
@@ -195,16 +199,9 @@ class AddReservationScreen extends Component<IProps, IState>{
                             value={hotelName}
                         />
                         {this.datePickerController()}
-                        {/*<TextInput
-                            style={styles.textInput}
-                            onChangeText={this._handleMultiInput('arrivalDate')}
-                            value={arrivalDate}
-                        />
-                        <TextInput
-                            style={styles.textInput}
-                            onChangeText={this._handleMultiInput('departureDate')}
-                            value={departureDate}
-                        />*/}
+                        {/**
+                         *TODO:Add helper text to show the dates
+                         */}
                         <TouchableOpacity onPress={this._onSubmit(PostMutation)}>
                             <Text>Submit</Text>
                         </TouchableOpacity>

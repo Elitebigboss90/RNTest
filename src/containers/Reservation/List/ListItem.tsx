@@ -29,7 +29,6 @@ export class ListItem extends PureComponent<IProps> {
 
     render() {
         const { name, arrivalDate, departureDate } = this.props.item.item;
-        console.log(this.props)
         return (
             <TouchableHighlight onPress={this.onRowPress} style={styles.container}>
                 <View>

@@ -21,9 +21,7 @@ type Props = {};
 export default class RNTest extends Component<Props> {
   render() {
     return (
-
       <App />
-
     );
   }
 }
