@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
     textColor: {
         color: 'black'
     },
+    iconContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
 
 export default styles;

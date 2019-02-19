@@ -107,7 +107,11 @@ class ReservationScreen extends Component<IProps, IState>{
                                 <View>
                                     <Text>HomePage</Text>
                                 </View>
-                                <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
+                                <View style={styles.iconContainer}>
+                                    <Text>Add New</Text>
+                                    <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
+                                </View>
+
                             </Header>
 
                             <View style={{ flex: 1 }}>
