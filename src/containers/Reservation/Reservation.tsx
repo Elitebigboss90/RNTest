@@ -78,7 +78,6 @@ class ReservationScreen extends Component<IProps, IState>{
     }
 
     _subscribeToNewReservation = async (subscribeToMore: any) => {
-        console.log("Reservation", subscribeToMore)
         subscribeToMore({
             document: newReservation,
             updateQuery: (prev, { subscriptionData }) => {
@@ -115,7 +114,6 @@ class ReservationScreen extends Component<IProps, IState>{
                             </Header>
 
                             <View style={{ flex: 1 }}>
-                                {console.log("get from", data, error)}
                                 <List data={data.reservations} onPress={this.handleItem} />
                             </View>
                         </View>)

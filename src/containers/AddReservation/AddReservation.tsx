@@ -104,7 +104,6 @@ class AddReservationScreen extends Component<IProps, IState>{
 
     _onCompleted = (data: any) => {
         const { navigation } = this.props;
-        console.log("data", data);
         navigation.goBack()
     }
 
