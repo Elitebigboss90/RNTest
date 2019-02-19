@@ -96,7 +96,9 @@ class ReservationScreen extends Component<IProps, IState>{
         return (
             <Query query={reservationQuery}>
                 {({ loading, error, data, subscribeToMore }) => {
-                    console.log(data);
+                    /*   
+                    *   TODO: Add loading handler to make sure user won't see any thing blank
+                    **/
                     this._subscribeToNewReservation(subscribeToMore);
                     return (
                         < View style={styles.container}>

@@ -12,6 +12,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { ApolloLink } from 'apollo-link';
+import { withClientState } from 'apollo-link-state';
 
 
 const AppContainer = createAppContainer(RootNavigator);
@@ -34,6 +35,13 @@ export const wsClient = new SubscriptionClient(`https://us1.prisma.sh/public-luc
 
 const webSocketLink = new WebSocketLink(wsClient);
 
+const stateLink = withClientState({
+    cache: new InMemoryCache,
+    defaults: {},
+    resolvers: {},
+});
+
+
 const requestLink = ({ queryOrMutationLink, subscriptionLink }) =>
     ApolloLink.split(
         ({ query }) => {
@@ -45,6 +53,7 @@ const requestLink = ({ queryOrMutationLink, subscriptionLink }) =>
     );
 
 const link = ApolloLink.from([
+    stateLink,
     requestLink({
         queryOrMutationLink: httpLink,
         subscriptionLink: webSocketLink,
