@@ -108,7 +108,7 @@ class AddReservationScreen extends Component<IProps, IState>{
         navigation.goBack()
     }
 
-    public async datePickerAndroid(stateName: string) {
+    public datePickerAndroid = (stateName: string) => async e => {
         try {
             const { action, year, month, day } = await DatePickerAndroid.open({
                 // Use `new Date()` for current date.
@@ -117,39 +117,55 @@ class AddReservationScreen extends Component<IProps, IState>{
             });
             if (action !== DatePickerAndroid.dismissedAction) {
                 // Selected year, month (0-11), day
-                let dateString = month + '/' + day + '/' + year;
-                this._handleMultiInput(stateName)
+                let dateString = (parseInt(month) + 1) + '/' + day + '/' + year;
+                this.setState({ [stateName]: dateString })
             }
         } catch ({ code, message }) {
             console.warn('Cannot open date picker', message);
         }
     }
 
+
     public datePickerController() {
         const { arrivalDate, departureDate } = this.state;
         return (
             <>
-                {Platform.OS === 'ios' ? <DatePickerIOS
+                {Platform.OS === 'ios' ? <><Text>Arrival Date</Text><DatePickerIOS
                     date={arrivalDate}
                     onDateChange={this._handleDateInput('arrivalDate')}
                     mode={'date'}
-                /> : this.datePickerAndroid('arrivalDate')}
-                {Platform.OS === 'ios' ? <DatePickerIOS
+                /></> : <TouchableOpacity onPress={this.datePickerAndroid('arrivalDateISO')}><Text>Add ArrivalDate</Text></TouchableOpacity>}
+                {Platform.OS === 'ios' ? <><Text>Departure Date</Text><DatePickerIOS
                     date={departureDate}
                     mode={'date'}
+                    minimumDate={arrivalDate}
                     onDateChange={this._handleDateInput('departureDate')}
-                /> : this.datePickerAndroid('departureDate')}
+                /></> : <TouchableOpacity onPress={this.datePickerAndroid('departureDateISO')}><Text>Add Departure Date</Text></TouchableOpacity>}
             </>
         )
     }
-    public _onSubmit = (mutation: any) => {
-        const { arrivalDate, departureDate } = this.state;
-        let arrivalDateISO = this.getFormattedDate(arrivalDate);
-        let departureDateISO = this.getFormattedDate(departureDate);
+    public _onSubmit = (mutation: any) => e => {
 
-        this.setState({ arrivalDateISO, departureDateISO }, () => {
-            mutation();
-        })
+        const { arrivalDate, departureDate, name, hotelName } = this.state;
+        if (Platform.OS === 'ios') {
+            let arrivalDateISO = this.getFormattedDate(arrivalDate);
+            let departureDateISO = this.getFormattedDate(departureDate);
+
+            this.setState({ arrivalDateISO, departureDateISO }, () => {
+                if (name && hotelName && arrivalDateISO && departureDateISO)
+                    mutation();
+                else {
+                    Alert.alert("Please Fill Out Blank(s)")
+                }
+            })
+        } else {
+            if (name && hotelName)
+                mutation();
+            else {
+                Alert.alert("Please Fill Out Blank(s)")
+            }
+        }
+
 
 
     }
@@ -189,7 +205,7 @@ class AddReservationScreen extends Component<IProps, IState>{
                             onChangeText={this._handleMultiInput('departureDate')}
                             value={departureDate}
                         />*/}
-                        <TouchableOpacity onPress={() => this._onSubmit(PostMutation)}>
+                        <TouchableOpacity onPress={this._onSubmit(PostMutation)}>
                             <Text>Submit</Text>
                         </TouchableOpacity>
                     </View>
