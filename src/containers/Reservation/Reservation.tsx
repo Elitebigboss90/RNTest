@@ -2,21 +2,17 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    TouchableOpacity,
-    Image,
-    Keyboard,
-    AppState,
-    Alert,
-    AsyncStorage
 } from "react-native";
 import PropTypes from "prop-types";
+
+import { NavigationScreenProp } from "react-navigation";
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
 import { Header } from "../../common/Header/Header"
 import { Button } from "../../common/Button/Button"
 import { nextIcon } from "../../static/imports/icons"
 import styles from "./styles"
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import { NavigationScreenProp } from "react-navigation";
 import List from "./List/List"
 
 interface IProps {

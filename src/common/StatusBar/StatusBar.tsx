@@ -2,12 +2,6 @@ import React, { PureComponent } from "react";
 import { SafeAreaView, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 
-// TODO: Refactor to move  StatusBarStyling into its own component.
-/* eslint-disable react/no-multi-comp */
-
-// TODO: Refactor or remove multiple classes in same file.
-/* tslint:disable:max-classes-per-file */
-
 export class StatusBarStyling extends PureComponent {
     public static propTypes = {
         barStyle: PropTypes.string

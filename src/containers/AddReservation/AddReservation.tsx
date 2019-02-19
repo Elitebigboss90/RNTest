@@ -4,23 +4,23 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    Image,
-    Keyboard,
-    AppState,
     Alert,
-    AsyncStorage,
     DatePickerIOS,
     DatePickerAndroid,
     Platform
 } from "react-native";
 import PropTypes from "prop-types";
+
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import { NavigationScreenProp } from "react-navigation";
+
 import { Header } from "../../common/Header/Header";
 import { Button } from "../../common/Button/Button";
 import { nextIcon } from "../../static/imports/icons";
 import styles from "./styles";
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import { NavigationScreenProp } from "react-navigation";
+
+
 
 interface IProps {
     navigation: NavigationScreenProp<any, any>;

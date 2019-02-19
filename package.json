@@ -3,7 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "yarn npm_patches && rndebugger-open",
+    "npm_patches": "node bin/patches/install.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start-clean": "yarn start -- --reset-cache",
+    "ios": "react-native run-ios",
+    "ios-clean": "yarn clean-ios && yarn ios",
+    "android": "react-native run-android",
+    "android-clean": "yarn clean-android && yarn android",
+    "android-menu": "adb shell input keyevent 82",
+    "clean-android": "cd android && ./gradlew clean",
+    "clean-dev": "yarn clean-node && yarn",
+    "clean-ios": "yarn clean-xcode && yarn reset-ios",
+    "clean-node": "rm -rf node_modules",
+    "clean-packager": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro* && rm -rf $TMPDIR/haste-*",
+    "clean-pods": "cd ios && rm -rf Pods/ && pod install",
     "test": "jest"
   },
   "dependencies": {
