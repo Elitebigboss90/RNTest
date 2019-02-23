@@ -6,6 +6,7 @@
 - [Installation](#installation)
 - [Running the Application](#runningapp)
 - [CocoaPods](#cocoaPods)
+- [Test](#test)
 
 #### Other Important pages
 
@@ -117,3 +118,12 @@ fs.copySync(src, dest);
 
 console.log("* Patched biometrics");
 ```
+<a name="test"/>
+
+### Test with Jest/Enzyme
+These are powerful tool to test stuff. 
+run command `yarn test` to test current script.
+
+Following is the instruction to create test profile with apollo client.
+Remember to add MockProvide tag and wrap the component you want to test with renderer method. 
+Or shallow test with component;

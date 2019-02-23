@@ -31,8 +31,6 @@ const createTestProps = (props: Object) => ({
 });
 
 
-
-
 describe("AddReservationScreen", () => {
     describe("rendering", () => {
         let wrapper: ShallowWrapper;
