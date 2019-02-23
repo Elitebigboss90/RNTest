@@ -64,7 +64,6 @@ class ReservationScreen extends Component<IProps, IState>{
 
 
     public handleNavigation = () => {
-        console.log("event")
         const { navigation } = this.props;
         navigation.navigate("AddReservation")
     }
