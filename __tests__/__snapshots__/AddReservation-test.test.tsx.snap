@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddReservationScreen rendering should check the nameInput if its update state correctly 1`] = `ShallowWrapper {}`;
+
+exports[`AddReservationScreen rendering should check the navigation if its goes back 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 64,
+          "paddingHorizontal": 8,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 24,
+            "opacity": 1,
+            "transform": Array [
+              Object {
+                "rotate": "90deg",
+              },
+            ],
+            "width": 24,
+          }
+        }
+        testID="#back"
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/static/icons/iconBlackChevronRight.png",
+            }
+          }
+          style={
+            Object {
+              "height": 24,
+              "transform": Array [
+                Object {
+                  "rotate": "90deg",
+                },
+              ],
+              "width": 24,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Text>
+          Add New Reservation
+        </Text>
+      </View>
+      <View />
+    </View>
+  </RCTSafeAreaView>
+  <View>
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "height": 50,
+          "margin": 8,
+        }
+      }
+      testID="#name"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "height": 50,
+          "margin": 8,
+        }
+      }
+      testID="#hotelname"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <Text>
+      Arrival Date
+    </Text>
+    <View>
+      <RCTDatePicker
+        date={1550919237944}
+        mode="date"
+        onChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 216,
+          }
+        }
+      />
+    </View>
+    <Text>
+      Departure Date
+    </Text>
+    <View>
+      <RCTDatePicker
+        date={1550919237944}
+        minimumDate={1550919237944}
+        mode="date"
+        onChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 216,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text>
+        Submit
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`AddReservationScreen rendering should render the child element 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 64,
+          "paddingHorizontal": 8,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 24,
+            "opacity": 1,
+            "transform": Array [
+              Object {
+                "rotate": "90deg",
+              },
+            ],
+            "width": 24,
+          }
+        }
+        testID="#back"
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/static/icons/iconBlackChevronRight.png",
+            }
+          }
+          style={
+            Object {
+              "height": 24,
+              "transform": Array [
+                Object {
+                  "rotate": "90deg",
+                },
+              ],
+              "width": 24,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Text>
+          Add New Reservation
+        </Text>
+      </View>
+      <View />
+    </View>
+  </RCTSafeAreaView>
+  <View>
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "height": 50,
+          "margin": 8,
+        }
+      }
+      testID="#name"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "grey",
+          "borderBottomWidth": 1,
+          "height": 50,
+          "margin": 8,
+        }
+      }
+      testID="#hotelname"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <Text>
+      Arrival Date
+    </Text>
+    <View>
+      <RCTDatePicker
+        date={1550919237926}
+        mode="date"
+        onChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 216,
+          }
+        }
+      />
+    </View>
+    <Text>
+      Departure Date
+    </Text>
+    <View>
+      <RCTDatePicker
+        date={1550919237926}
+        minimumDate={1550919237926}
+        mode="date"
+        onChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "height": 216,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text>
+        Submit
+      </Text>
+    </View>
+  </View>
+</View>
+`;

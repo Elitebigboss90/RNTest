@@ -22,5 +22,8 @@ module.exports = {
     ],
     "setupFiles": [
         "./__tests__/setup.js"
+    ],
+    "transformIgnorePatterns": [
+        "node_modules/(?!react-native|react-navigation|react-native-gesture-handler)/"
     ]
 }

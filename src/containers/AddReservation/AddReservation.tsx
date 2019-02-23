@@ -19,7 +19,7 @@ import { Header } from "../../common/Header/Header";
 import { Button } from "../../common/Button/Button";
 import { nextIcon } from "../../static/imports/icons";
 import styles from "./styles";
-import console from "console";
+//import console from "console";
 //import console = require("console");
 
 
@@ -71,7 +71,7 @@ class AddReservationScreen extends Component<IProps, IState>{
         navigation: PropTypes.shape({}).isRequired,
     };
 
-    public handleNavigation = () => (e: Event) => {
+    public handleNavigation = () => {
         const { navigation } = this.props;
         navigation.goBack()
     }
@@ -82,6 +82,9 @@ class AddReservationScreen extends Component<IProps, IState>{
             var value: string = text;
             this.setState({ [id]: value })
         }
+    }
+    public _handleNameInput = (nameVlue: string) => {
+        this.setState({ name: nameVlue })
     }
 
     public _handleDateInput(stateName: string) {
@@ -114,15 +117,16 @@ class AddReservationScreen extends Component<IProps, IState>{
         navigation.goBack()
     }
 
-    public datePickerAndroid = (stateName: string) => async e => {
+    public datePickerAndroid = (stateName: string) => async (e: any) => {
         try {
+            //The Reason why put a ignore here is just because year month day is valid return from DatePickerAndroid but it wrapped in the actions.
+            //@ts-ignore
             const { action, year, month, day } = await DatePickerAndroid.open({
                 // Use `new Date()` for current date.
                 // May 25 2020. Month 0 is January.
                 date: new Date()
-            });
-            console.log("android", action)
-            Alert.alert("here", date)
+            })
+            console.log("android", action, year, month, day)
             if (action !== DatePickerAndroid.dismissedAction) {
                 // Selected year, month (0-11), day
                 let dateString = (parseInt(month) + 1) + '/' + day + '/' + year;
@@ -184,12 +188,12 @@ class AddReservationScreen extends Component<IProps, IState>{
 
     public render() {
         const { name, hotelName, arrivalDateISO, departureDateISO } = this.state;
-
         return (
             <Mutation mutation={Add_Reservation} onError={this.onError} onCompleted={this._onCompleted} variables={{ name, hotelName, arrivalDate: arrivalDateISO, departureDate: departureDateISO }}>{PostMutation =>
                 <View style={styles.container}>
                     <Header>
-                        <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} />
+
+                        <Button icon={nextIcon} onPress={this.handleNavigation} style={styles.headerIcon} testID='#back' />
                         <View>
                             <Text>Add New Reservation</Text>
                         </View>
@@ -198,13 +202,15 @@ class AddReservationScreen extends Component<IProps, IState>{
                     <View>
                         <TextInput
                             style={styles.textInput}
-                            onChangeText={this._handleMultiInput('name')}
+                            onChangeText={this._handleNameInput}
                             value={name}
+                            testID='#name'
                         />
                         <TextInput
                             style={styles.textInput}
                             onChangeText={this._handleMultiInput('hotelName')}
                             value={hotelName}
+                            testID='#hotelname'
                         />
                         {this.datePickerController()}
                         {/**
