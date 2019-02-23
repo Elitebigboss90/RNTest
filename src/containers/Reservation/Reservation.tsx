@@ -14,6 +14,7 @@ import { Button } from "../../common/Button/Button"
 import { nextIcon } from "../../static/imports/icons"
 import styles from "./styles"
 import List from "./List/List"
+//import console = require("console");
 
 interface IProps {
     navigation: NavigationScreenProp<any, any>;
@@ -63,6 +64,7 @@ class ReservationScreen extends Component<IProps, IState>{
 
 
     public handleNavigation = () => {
+        console.log("event")
         const { navigation } = this.props;
         navigation.navigate("AddReservation")
     }
@@ -76,10 +78,10 @@ class ReservationScreen extends Component<IProps, IState>{
     _subscribeToNewReservation = async (subscribeToMore: any) => {
         subscribeToMore({
             document: newReservation,
-            updateQuery: (prev, { subscriptionData }) => {
+            updateQuery: (prev: any, { subscriptionData }: any) => {
                 if (!subscriptionData.data) return prev
                 const newReservation = subscriptionData.data.reservation.node;
-                const exists = prev.reservations.find(({ id }) => id === newReservation.id);
+                const exists = prev.reservations.find(({ id }: any) => id === newReservation.id);
                 if (exists) return prev;
 
                 return prev.reservations.push(subscriptionData.data.reservation.node)

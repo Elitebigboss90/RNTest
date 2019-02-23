@@ -19,6 +19,8 @@ import { Header } from "../../common/Header/Header";
 import { Button } from "../../common/Button/Button";
 import { nextIcon } from "../../static/imports/icons";
 import styles from "./styles";
+import console from "console";
+//import console = require("console");
 
 
 
@@ -32,7 +34,8 @@ interface IState {
     arrivalDate: Date,
     departureDate: Date,
     arrivalDateISO: string,
-    departureDateISO: string
+    departureDateISO: string,
+    [key: string]: any
 }
 
 const Add_Reservation = gql`mutation PostMutation($name: String!, $hotelName: String!,$arrivalDate: String!, $departureDate: String!){
@@ -68,20 +71,24 @@ class AddReservationScreen extends Component<IProps, IState>{
         navigation: PropTypes.shape({}).isRequired,
     };
 
-    public handleNavigation = () => {
+    public handleNavigation = () => (e: Event) => {
         const { navigation } = this.props;
         navigation.goBack()
     }
 
     public _handleMultiInput(stateName: string) {
+        var id: string = stateName;
         return (text: string) => {
-            this.setState({ [stateName]: text })
+            var value: string = text;
+            this.setState({ [id]: value })
         }
     }
 
     public _handleDateInput(stateName: string) {
+        var name: string = stateName;
         return (selectedDate: Date) => {
-            this.setState({ [stateName]: selectedDate })
+            var value: Date = selectedDate;
+            this.setState({ [name]: value })
         }
 
     }
@@ -114,6 +121,8 @@ class AddReservationScreen extends Component<IProps, IState>{
                 // May 25 2020. Month 0 is January.
                 date: new Date()
             });
+            console.log("android", action)
+            Alert.alert("here", date)
             if (action !== DatePickerAndroid.dismissedAction) {
                 // Selected year, month (0-11), day
                 let dateString = (parseInt(month) + 1) + '/' + day + '/' + year;
@@ -143,7 +152,7 @@ class AddReservationScreen extends Component<IProps, IState>{
             </>
         )
     }
-    public _onSubmit = (mutation: any) => e => {
+    public _onSubmit = (mutation: any) => (e: Event) => {
 
         const { arrivalDate, departureDate, name, hotelName } = this.state;
         if (Platform.OS === 'ios') {

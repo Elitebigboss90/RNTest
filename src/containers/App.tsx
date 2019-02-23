@@ -42,7 +42,7 @@ const stateLink = withClientState({
 });
 
 
-const requestLink = ({ queryOrMutationLink, subscriptionLink }) =>
+const requestLink = ({ queryOrMutationLink, subscriptionLink }:{queryOrMutationLink:any, subscriptionLink:any}) =>
     ApolloLink.split(
         ({ query }) => {
             const { kind, operation } = getMainDefinition(query);

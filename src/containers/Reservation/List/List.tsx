@@ -42,7 +42,6 @@ class List extends PureComponent<IProps> {
                 data={data}
                 keyExtractor={(item: any, index: number) => item.id}
                 renderItem={this.onRenderItem}
-                listemptycomponent={() => <View />}
             />
         )
     }
