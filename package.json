@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "yarn npm_patches && rndebugger-open",
+    "postinstall": "yarn npm_patches",
     "npm_patches": "node bin/patches/install.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "start-clean": "yarn start -- --reset-cache",
@@ -23,10 +23,14 @@
   "dependencies": {
     "apollo-boost": "^0.1.28",
     "apollo-link-ws": "^1.0.14",
+    "enzyme": "^3.9.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
+    "jest-serializer-enzyme": "^1.0.0",
     "react": "16.6.3",
+    "react-addons-test-utils": "^15.6.2",
     "react-apollo": "^2.4.1",
+    "react-dom": "^16.8.3",
     "react-native": "0.58.4",
     "react-native-gesture-handler": "^1.0.15",
     "react-navigation": "^3.3.0",
