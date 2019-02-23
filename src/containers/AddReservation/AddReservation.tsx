@@ -126,7 +126,6 @@ class AddReservationScreen extends Component<IProps, IState>{
                 // May 25 2020. Month 0 is January.
                 date: new Date()
             })
-            console.log("android", action, year, month, day)
             if (action !== DatePickerAndroid.dismissedAction) {
                 // Selected year, month (0-11), day
                 let dateString = (parseInt(month) + 1) + '/' + day + '/' + year;
